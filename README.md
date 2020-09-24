@@ -9,11 +9,11 @@ fmt.Print(s) // output: mUNERA9rI2
 
 // Letters is source of generated random string.(Default: A~Z & a~z & 0~9)
 randstr.Letters = []rune("グレープフルーツ最高！！あとマンゴーも！！")
-s := randstr.Gen(6)
+s = randstr.Gen(6)
 fmt.Print(s) // output: あ高ツフマレ
 
 randstr.Letters = []rune(randstr.StrLettersNum + randstr.StrLettersUpper)
-s := randstr.Gen(8)
+s = randstr.Gen(8)
 fmt.Print(s) // output: IIDAZG7H
 
 
