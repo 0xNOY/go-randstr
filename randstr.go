@@ -1,6 +1,7 @@
 package randstr
 
 import (
+	errors "errors"
 	rand "math/rand"
 )
 
@@ -13,10 +14,15 @@ const (
 	LettersLowerStr = "abcdefghijklmnopqrstuvwxyz"
 )
 
+var (
+	// ErrZeroLengthLetters is error.
+	ErrZeroLengthLetters = errors.New("srcLetters must not be zero in length")
+)
+
 // RandStr is random string generater.
 type RandStr struct {
-	// Letters is source of generated random string.
-	Letters    []rune
+	// srcLetters is source of generated random string.
+	srcLetters []rune
 	randModule *rand.Rand
 }
 
@@ -24,18 +30,33 @@ type RandStr struct {
 func New(src rand.Source, letters []rune) *RandStr {
 	return &RandStr{
 		randModule: rand.New(src),
-		Letters:    letters,
+		srcLetters: letters,
 	}
 }
 
 // Gen generates random string.
 func (rs *RandStr) Gen(length uint) string {
-	l := len(rs.Letters)
+	l := len(rs.srcLetters)
 	r := make([]rune, length)
 	for i := uint(0); i < length; i++ {
-		r[i] = rs.Letters[rs.randModule.Intn(l)]
+		r[i] = rs.srcLetters[rs.randModule.Intn(l)]
 	}
 	return string(r)
+}
+
+// GetSrcLetters gets srcLetters.
+func (rs *RandStr) GetSrcLetters() []rune {
+	return rs.srcLetters
+}
+
+// SetSrcLetters sets srcLetters.
+func (rs *RandStr) SetSrcLetters(letters []rune) error {
+	if len(letters) <= 0 {
+		return ErrZeroLengthLetters
+	}
+
+	rs.srcLetters = letters
+	return nil
 }
 
 // GetRandModule gets randModule.
