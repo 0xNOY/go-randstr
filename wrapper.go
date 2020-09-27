@@ -6,8 +6,8 @@ import (
 )
 
 var (
-	// Letters is letters used generating random string.
-	Letters = []rune(StrLettersLower + StrLettersUpper + StrLettersNum)
+	// Letters is source of generated random string.
+	Letters = []rune(LettersLowerStr + LettersUpperStr + LettersNumStr)
 	randStr = New(
 		rand.NewSource(time.Now().UnixNano()),
 		Letters,

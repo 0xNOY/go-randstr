@@ -5,17 +5,17 @@ import (
 )
 
 const (
-	// StrLettersNum is numbers from 0 to 9.
-	StrLettersNum = "0123456789"
-	// StrLettersUpper is upper case from A to Z.
-	StrLettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	// StrLettersLower is lower case from a to z.
-	StrLettersLower = "abcdefghijklmnopqrstuvwxyz"
+	// LettersNumStr is numbers from 0 to 9.
+	LettersNumStr = "0123456789"
+	// LettersUpperStr is upper case from A to Z.
+	LettersUpperStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	// LettersLowerStr is lower case from a to z.
+	LettersLowerStr = "abcdefghijklmnopqrstuvwxyz"
 )
 
 // RandStr is random string generater.
 type RandStr struct {
-	// Letters is letters used generating random string.
+	// Letters is source of generated random string.
 	Letters    []rune
 	randModule *rand.Rand
 }
