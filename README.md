@@ -1,4 +1,4 @@
-# go-rand-str
+# go-randstr
 random string generator for golang
 
 # example
