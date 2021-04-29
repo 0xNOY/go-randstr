@@ -7,7 +7,7 @@ s := randstr.Gen(10)
 fmt.Print(s) // output: mUNERA9rI2
 
 
-// Letters is source of generated random string.(Default: A~Z & a~z & 0~9)
+// SrcLetters is source of random string generated.(Default: A~Z & a~z & 0~9)
 randstr.SetSrcLetters([]rune("グレープフルーツ最高！！あとマンゴーも！！"))
 s = randstr.Gen(6)
 fmt.Print(s) // output: あ高ツフマレ
